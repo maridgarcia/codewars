@@ -151,3 +151,19 @@ const printerError = (s) => {
     return `${errorCounter}/${s.length}`;
 }
 
+/* accum("abcd") -> "A-Bb-Ccc-Dddd"
+accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+accum("cwAt") -> "C-Ww-Aaa-Tttt" */
+
+const accum = (str) => {
+    let result = '';
+    
+    for(let i = 0; i < str.length; i += 1) {
+        result += str[i].toUpperCase() + str[i].repeat(i).toLowerCase();
+        if(i < str.length - 1) {
+            result += '-';
+        }
+    }
+    return result;
+}
+
