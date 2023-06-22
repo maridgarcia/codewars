@@ -52,35 +52,6 @@ const isItPrimeNumber = (number) => {
     }
 }
 
-/* Algoritmo de Busca Binária: Receba uma lista ordenada e um elemento alvo e determine se o elemento está presente na lista, utilizando o algoritmo de busca binária.*/
-const binarySearch = (array, elem) => {
-    // o primeiro elemento deve ser menor que o último elemento
-    let primeiroElemento = array[0];
-    let ultimoElemento = array.length - 1;
-
-    // checar se o primeiro indice é igual ao elemento procurado
-    if(primeiroElemento === elem) return `${elem} encontrado!`;
-    
-    // enquanto primeiro indice for menor que o ultimo indice, iniciar a busca - em três partes
-    while(primeiroElemento <= ultimoElemento) {
-        // 1. encontrar a metade do array
-        let meio = Math.floor((primeiroElemento + ultimoElemento) / 2);
-        
-        // 2. se o valor da metade do array for igual o elmento, retornar
-        if(array[meio] === elem) {
-            return `${elem} encontrado!`
-        // 3. se não: a)buscar pela direita
-        } else if(array[meio] < elem) {
-            primeiroElemento = meio + 1;
-        // b)buscar pela esquerda
-        } else if(array[meio] > elem) {
-            ultimoElemento = meio - 1;
-        }
-    }
-    // se elemento procurado não existir na lista, retornar falsy
-    return `Elemento não existe na lista`;
-}
-
 // Algoritmo de Verificação de Palíndromo: Receba uma palavra ou frase e determine se ela é um palíndromo.
 const isPalindrome = (word) => {
     let wordToArray = word.split("");
@@ -177,3 +148,47 @@ const createPhoneNumber = (numbersArray) => {
     }
 }
 
+/* QuickSort */
+const quickSort = (arr) => {
+    let pivot = arr[0];
+    let left = [];
+    let right = [];
+
+    if(arr.length <= 1) return arr;
+
+    for(let i = 0; i < arr.length; i+=1) {
+        if(arr[i] < pivot) left.push(arr[i]);
+
+        if(arr[i] > pivot) right.push(arr[i]);
+    }
+    return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+/* Binary Search */
+const binarySearch = (array, elem) => {
+    // o primeiro elemento deve ser menor que o último elemento
+    let primeiroElemento = array[0];
+    let ultimoElemento = array.length - 1;
+
+    // checar se o primeiro indice é igual ao elemento procurado
+    if(primeiroElemento === elem) return `${elem} encontrado!`;
+    
+    // enquanto primeiro indice for menor que o ultimo indice, iniciar a busca - em três partes
+    while(primeiroElemento <= ultimoElemento) {
+        // 1. encontrar a metade do array
+        let meio = Math.floor((primeiroElemento + ultimoElemento) / 2);
+        
+        // 2. se o valor da metade do array for igual o elmento, retornar
+        if(array[meio] === elem) {
+            return `${elem} encontrado!`
+        // 3. se não: a)buscar pela direita
+        } else if(array[meio] < elem) {
+            primeiroElemento = meio + 1;
+        // b)buscar pela esquerda
+        } else if(array[meio] > elem) {
+            ultimoElemento = meio - 1;
+        }
+    }
+    // se elemento procurado não existir na lista, retornar falsy
+    return `Elemento não existe na lista`;
+}
