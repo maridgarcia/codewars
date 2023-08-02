@@ -227,10 +227,8 @@ const generateHashtag = (str) => {
       }).replace(/\s+/g, '');
     
     if(upperCasingStr.length > 140 || !upperCasingStr || !str) {
-        console.log(upperCasingStr.length);
         return false;
     }
-    console.log(upperCasingStr.length);
     return `#${upperCasingStr}`;
 }
 
